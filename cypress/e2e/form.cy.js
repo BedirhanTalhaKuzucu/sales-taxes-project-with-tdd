@@ -1,17 +1,15 @@
-// describe("form", () => {
-//   beforeEach(() => {
-//     cy.visit("http://localhost:3000")
-//   })
+describe("form", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
 
-//   it("the form contains the correct input", () => {
-//     cy.get("[data-test='hero-heading']").contains(
-//       "Testing Next.js Applications with Cypress"
-//     )
-//   })
+  it("the form contains  correct inputs", () => {
+    cy.get("[data-test='product-form']").should(($input) => {
+       expect($input.filter('input[type="text"]')).to.have.length(1)
+       expect($input.filter('input[type="number"]')).to.have.length(2)
+       expect($input.filter('select')).to.have.length(2)
+    })
+    
+  })
 
-//   it("the features on the homepage are correct", () => {
-//     cy.get("dt").eq(0).contains("4 Courses")
-//     cy.get("dt").eq(1).contains("25+ Lessons")
-//     cy.get("dt").eq(2).contains("Free and Open Source")
-//   })
-// })
+})
