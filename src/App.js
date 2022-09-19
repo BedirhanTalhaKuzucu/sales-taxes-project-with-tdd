@@ -1,9 +1,12 @@
 import './App.css';
+import ProductsForm from './components/ProductsForm';
+import ReceiptDetails from './components/ReceiptDetails';
 
 function App() {
   return (
     <div className="App">
-      projekt
+      <ProductsForm />
+      <ReceiptDetails />
     </div>
   );
 }
