@@ -1,32 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 
-function ProductsForm( ) {
+function ProductsForm() {
+  const [productCount, setproductCount] = useState([1]);
 
+  const addProduct = (e) => {
+    setproductCount([...productCount, productCount[productCount.length - 1] + 1 ]);
+    console.log(productCount);
+  };
 
   return (
     <div className=" container bg-warning table-responsive ">
-      <form  >
+      <form>
         <h2> Add Product </h2>
         <div>
-          <table >
+          <table>
             <tbody>
-                <tr >
+              {productCount.map((item, key) => (
+                <tr key={key}>
                   <th scope="row" className="col-md-1 ">
-                    <div class="input-group input-group-sm mb-3">
-                      <small> Product  </small>
+                    <div className="input-group input-group-sm mb-3">
+                      <small> Product </small>
                     </div>
                   </th>
                   <td className="col-md-3 ">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing">
+                    <div className="input-group input-group-sm mb-3">
+                      <span className="input-group-text" id="inputGroup-sizing">
                         Product Name
                       </span>
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm"
-                        name = "productname"
+                        name="productname"
                         data-test="product-form"
                         required
                       />
@@ -34,16 +40,16 @@ function ProductsForm( ) {
                   </td>
 
                   <td className="col-md-2">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                    <div className="input-group input-group-sm mb-3">
+                      <span className="input-group-text" id="inputGroup-sizing-sm">
                         Quantity
                       </span>
                       <input
                         type="number"
-                        class="form-control"
+                        className="form-control"
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm"
-                        name = "quantity"
+                        name="quantity"
                         data-test="product-form"
                         required
                       />
@@ -51,8 +57,8 @@ function ProductsForm( ) {
                   </td>
 
                   <td className="col-md-2">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                    <div className="input-group input-group-sm mb-3">
+                      <span className="input-group-text" id="inputGroup-sizing-sm">
                         Type of Product
                       </span>
                       <select
@@ -72,8 +78,8 @@ function ProductsForm( ) {
                   </td>
 
                   <td className="col-md-2">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                    <div className="input-group input-group-sm mb-3">
+                      <span className="input-group-text" id="inputGroup-sizing-sm">
                         Purchasing Type
                       </span>
                       <select
@@ -82,23 +88,26 @@ function ProductsForm( ) {
                         data-test="product-form"
                         required
                       >
-                        <option value="not Import" selected > not Import </option>
+                        <option value="not Import" selected>
+                          {" "}
+                          not Import{" "}
+                        </option>
                         <option value="import"> Import </option>
                       </select>
                     </div>
                   </td>
 
                   <td className="col-md-2">
-                    <div class="input-group input-group-sm mb-3">
-                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                    <div className="input-group input-group-sm mb-3">
+                      <span className="input-group-text" id="inputGroup-sizing-sm">
                         Price
                       </span>
                       <input
                         type="number"
-                        class="form-control"
+                        className="form-control"
                         aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm"
-                        name = "productPrice"
+                        name="productPrice"
                         data-test="product-form"
                         required
                       />
@@ -108,11 +117,15 @@ function ProductsForm( ) {
                     x
                   </td> */}
                 </tr>
+              ))}
             </tbody>
           </table>
         </div>
-        <button type="submit" data-testid="print-button"> Print Receipt </button>
+        <button type="submit" data-testid="print-button">
+          Print Receipt
+        </button>
       </form>
+      <button onClick={ (e) =>  addProduct(e)} data-testid="addProduct-button" >ADD Product</button>
     </div>
   );
 }
