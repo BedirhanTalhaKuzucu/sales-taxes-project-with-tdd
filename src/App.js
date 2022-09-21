@@ -1,6 +1,6 @@
 import './App.css';
-import ProductsForm from './components/ProductsForm';
-import ReceiptDetails from './components/ReceiptDetails';
+import ProductsForm from './components/ProductsForm/ProductsForm';
+import ReceiptDetails from './components/ReceiptDetails/ReceiptDetails';
 
 function App() {
   return (

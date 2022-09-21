@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function ProductsForm() {
+  const defaultDetails = [
+    {
+     id: 1,
+     productname :"",
+     quantity : "",
+     productType :"other",
+     productPrice: "",
+     buyingType:"not Import",
+   }
+ ]
+
   const [productCount, setproductCount] = useState([1]);
 
   const addProduct = (e) => {
     setproductCount([...productCount, productCount[productCount.length - 1] + 1 ]);
     console.log(productCount);
   };
+
+
+  const deleteProduct = () => {
+    if (productCount.length > 1) {
+      setproductCount(productCount.filter((item, index) => {  return  index !== productCount.length - 1 }))
+    }    
+    console.log(productCount);
+  } 
+
+  
+  
 
   return (
     <div className=" container bg-warning table-responsive ">
@@ -89,8 +111,7 @@ function ProductsForm() {
                         required
                       >
                         <option value="not Import" selected>
-                          {" "}
-                          not Import{" "}
+                          not Import
                         </option>
                         <option value="import"> Import </option>
                       </select>
@@ -113,9 +134,9 @@ function ProductsForm() {
                       />
                     </div>
                   </td>
-                  {/* <td  onClick={deleteProduct} >
-                    x
-                  </td> */}
+                  <td  >
+                    <button type="button" className="btn-close" aria-label="Close" data-testid="close-button" onClick={deleteProduct} ></button>
+                  </td>
                 </tr>
               ))}
             </tbody>
