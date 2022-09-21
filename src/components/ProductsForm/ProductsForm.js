@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 function ProductsForm() {
   const defaultDetails = [
@@ -13,16 +13,17 @@ function ProductsForm() {
  ]
 
   const [productCount, setproductCount] = useState([1]);
+  const id = useRef(2)
 
   const addProduct = (e) => {
-    setproductCount([...productCount, productCount[productCount.length - 1] + 1 ]);
+    setproductCount([...productCount, id.current++]);
     console.log(productCount);
   };
 
 
-  const deleteProduct = () => {
+  const deleteProduct = (e) => {
     if (productCount.length > 1) {
-      setproductCount(productCount.filter((item, index) => {  return  index !== productCount.length - 1 }))
+      setproductCount(productCount.filter((item) => {  return  item !== Number(e.target.id )}))
     }    
     console.log(productCount);
   } 
@@ -41,7 +42,7 @@ function ProductsForm() {
                 <tr key={key}>
                   <th scope="row" className="col-md-1 ">
                     <div className="input-group input-group-sm mb-3">
-                      <small> Product </small>
+                      <small> Product {key + 1} </small>
                     </div>
                   </th>
                   <td className="col-md-3 ">
@@ -135,7 +136,8 @@ function ProductsForm() {
                     </div>
                   </td>
                   <td  >
-                    <button type="button" className="btn-close" aria-label="Close" data-testid="close-button" onClick={deleteProduct} ></button>
+                    <button type="button" className="btn-close" aria-label="Close" id={item} 
+                      data-testid={`close-button-${item}`} onClick={(e) => deleteProduct(e)} ></button>
                   </td>
                 </tr>
               ))}
