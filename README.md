@@ -62,10 +62,10 @@ $ git clone https://github.com/BedirhanTalhaKuzucu/sales-taxes-project-with-tdd.
 ```
 
 ## Acknowledgements
-- I developed with an app react that calculates taxes
+- I developed  an app that calculates taxes with react 
 - I used bootstrap as css package
 - Users should add as many inputs as they buy by clicking the add button and enter information about the product in these inputs.
-- A receipt is created when the print button is pressed. The receipt contains the individual tax prices of the products and the total tax price.
+- A receipt is created when the print button is clicked. The receipt contains the individual tax prices of the products and the total tax price.
 
 ## Contact
 
