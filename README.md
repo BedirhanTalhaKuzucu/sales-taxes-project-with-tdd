@@ -1,4 +1,4 @@
-TEST IT => https://sales-tax-app.netlify.app/
+
 
 
 
@@ -7,8 +7,8 @@ TEST IT => https://sales-tax-app.netlify.app/
 
 <div align="center">
   <h3>
-    <a href="https://firebaseblog-app.netlify.app/">
-      Test it
+    <a href="https://sales-tax-app.netlify.app/">
+      Test DEMO
     </a>
     
  
