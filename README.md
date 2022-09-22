@@ -2,7 +2,7 @@
 
 
 
-<h1 align="center">FireBlog App with React</h1>
+<h1 align="center">Sales-Taxes App</h1>
 
 
 <div align="center">
