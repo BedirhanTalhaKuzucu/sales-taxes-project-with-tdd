@@ -33,7 +33,7 @@ function ProductsForm() {
 
   return (
     <div className=" container bg-warning table-responsive ">
-      <form>
+      <form data-testid="form" >
         <h2> Add Product </h2>
         <div>
           <table>
