@@ -50,5 +50,33 @@ describe("form", () => {
 
   })
 
+  
+it("validation of the form", () => {
+    for(let n = 0; n < 2; n ++){
+      cy.get("[data-testid='addProduct-button']").click();
+    }
+
+    cy.get("[data-testid='print-button']").click();
+    cy.get('input:invalid').should('have.length', 9)
+
+    cy.get("[data-test='product-form']").each(($item, index) => {
+      cy.log( $item.attr('name') )
+      if ($item.attr('name') === "productname") {
+        cy.wrap($item).type("new product")
+      }else if ($item.attr('name') === "quantity"){
+        cy.wrap($item).type(1)
+      }else if ($item.attr('name') === "productPrice"){
+        cy.wrap($item).type(10)
+      }
+      //product type and purchase type have values by default
+    })
+
+    cy.get("[data-testid='print-button']").click();
+    //The first product's form will remain invalid, as I will prevent re-rendering the page after form submit.
+    cy.get('input:invalid').should('have.length', 3)
+
+
+  })
+
 
 })
