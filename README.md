@@ -30,7 +30,7 @@
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/BedirhanTalhaKuzucu/fireBaseBlog/main/projectGif.gif)
+![screenshot](https://github.com/BedirhanTalhaKuzucu/sales-taxes-project-with-tdd/blob/main/ezgif.com-gif-maker.gif)
 
 ### Built With
 
