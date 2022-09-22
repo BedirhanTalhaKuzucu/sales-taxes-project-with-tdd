@@ -66,7 +66,7 @@ $ git clone https://github.com/BedirhanTalhaKuzucu/sales-taxes-project-with-tdd.
 - I used bootstrap as css package
 - Users should add as many inputs as they buy by clicking the add button and enter information about the product in these inputs.
 - A receipt is created when the print button is clicked. The receipt contains the individual tax prices of the products and the total tax price.
-
+- I used react testing library and cypress for testing
 ## Contact
 
 - GitHub [@BedirhanTalhaKuzucu](https://github.com/BedirhanTalhaKuzucu)
