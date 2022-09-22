@@ -40,12 +40,11 @@
 - CSS
 - JS
 - React
-- Mui
 - Bootstrap
 
 ## How To Use
 
-<!-- This is an example, please update according to your application -->
+
 
 To clone and run this application, you'll need [Git](https://git-scm.com) 
 ```bash
@@ -55,6 +54,9 @@ $ git clone https://github.com/BedirhanTalhaKuzucu/fireBaseBlog.git
     -cd into the new folder and type
     $ npm install. 
     $ npm start.
+ # to run the test codes
+    - for react Testing Library
+      $ npm test
 ```
 
 ## Acknowledgements
