@@ -18,7 +18,6 @@ function ProductsForm({setproductList, setlistOpen}) {
 
   const addProduct = () => {
     
-    console.log(id.current);
     setproductDetails([ ...productDetails,  {
       id:id.current++,
       productname :"",
@@ -70,6 +69,7 @@ function ProductsForm({setproductList, setlistOpen}) {
 
     setlistOpen(true)
     setproductDetails(defaultDetails)
+    e.target.reset()
   }
 
 

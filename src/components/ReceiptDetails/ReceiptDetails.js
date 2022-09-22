@@ -16,7 +16,6 @@ function ReceiptDetails({ productList, listOpen }) {
       subTotal = subTotal.toFixed(2)
       setTotalPrice({totalTax, subTotal})
       
-      console.log(totalTax, subTotal)
       console.log(productList);
 
     }
