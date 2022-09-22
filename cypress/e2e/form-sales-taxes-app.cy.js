@@ -33,33 +33,20 @@ describe("form", () => {
     }
 
     // cy.get('input:invalid').should('have.length', 9)
-
+    const controlValueList = []
     cy.get("[data-test='product-form']").each(($item, index) => {
       if ($item.attr('name') === "productname") {
         cy.wrap($item).type(`new product ${index} `)
+        controlValueList.push($item.val())
       }else if ($item.attr('name') === "quantity"){
         cy.wrap($item).type(index)
+        controlValueList.push($item.val())
       }else if ($item.attr('name') === "productPrice"){
         cy.wrap($item).type(10 + index)
+        controlValueList.push($item.val())
       }
       //product type and purchase type have values by default
-    })
-
-    cy.get("[data-testid='print-button']").click();
-    cy.get("[data-testid='receipt-print']").contains("Invoice")
-
-    cy.get("[data-test='product-form']").each(($item, index) => {
-      if ($item.attr('name') === "productname"  ) {
-        cy.log( $item.val() )
-        let controlValue = $item.val()
-        cy.get("[data-testid='product-table']").contains(controlValue)
-      }else if ($item.attr('name') === "quantity"  ) {
-        cy.log( $item.val() )
-        let controlValue = $item.val()
-        cy.get("[data-testid='product-table']").contains(controlValue)
-      }
-      
-    })
+    })  
 
   })
 

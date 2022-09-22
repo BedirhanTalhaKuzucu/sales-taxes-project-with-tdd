@@ -1,61 +1,96 @@
 import React, { useEffect, useState, useRef } from "react";
 
-function ProductsForm() {
+function ProductsForm({ setproductList, setlistOpen }) {
   const defaultDetails = [
     {
-     id: 1,
-     productname :"",
-     quantity : "",
-     productType :"other",
-     productPrice: "",
-     buyingType:"not Import",
-   }
- ]
+      id: 1,
+      productname: "",
+      quantity: "",
+      productType: "other",
+      productPrice: "",
+      buyingType: "not Import",
+    },
+  ];
 
-  const [productCount, setproductCount] = useState([1]);
-  const id = useRef(2)
+  const [productDetails, setproductDetails] = useState(defaultDetails);
 
-  const addProduct = (e) => {
-    setproductCount([...productCount, id.current++]);
-    console.log(productCount);
+  const id = useRef(2);
+
+  const addProduct = () => {
+    console.log(id.current);
+    setproductDetails([
+      ...productDetails,
+      {
+        id: id.current++,
+        productname: "",
+        quantity: "",
+        productType: "other",
+        productPrice: "",
+        buyingType: "not Import",
+      },
+    ]);
   };
 
-
   const deleteProduct = (e) => {
-    if (productCount.length > 1) {
-      setproductCount(productCount.filter((item) => {  return  item !== Number(e.target.id )}))
-    }    
-    console.log(productCount);
-  } 
+    if (productDetails.length > 1) {
+      setproductDetails(
+        Object.values(productDetails).filter((item) => {
+          return item.id !== Number(e.target.id);
+        })
+      );
+    } else {
+      setproductDetails(defaultDetails);
+    }
+  };
 
-  
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setproductList(productDetails);
+
+    setlistOpen(true);
+    setproductDetails(defaultDetails);
+  };
+
+  const handleChange = (e) => {
+    let index = productDetails.findIndex(
+      (item) => item.id === Number(e.target.id)
+    );
+    console.log(index);
+    let newArray = [...productDetails];
+    newArray[index][`${e.target.name}`] = e.target.value;
+    setproductDetails(newArray);
+  };
 
   return (
     <div className=" container bg-warning table-responsive ">
-      <form data-testid="form" >
+      <form onSubmit={handleSubmit} data-testid="form">
         <h2> Add Product </h2>
         <div>
           <table>
             <tbody>
-              {productCount.map((item, key) => (
+              {productDetails.map((item, key) => (
                 <tr key={key}>
                   <th scope="row" className="col-md-1 ">
-                    <div className="input-group input-group-sm mb-3">
+                    <div class="input-group input-group-sm mb-3">
                       <small> Product {key + 1} </small>
                     </div>
                   </th>
                   <td className="col-md-3 ">
-                    <div className="input-group input-group-sm mb-3">
-                      <span className="input-group-text" id="inputGroup-sizing">
-                        Product Name
+                    <div class="input-group input-group-sm mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing">
+                        <label id="prdctname">Product Name</label>
                       </span>
                       <input
                         type="text"
-                        className="form-control"
+                        class="form-control"
                         aria-label="Sizing example input"
+                        aria-labelledby="prdctname"
                         aria-describedby="inputGroup-sizing-sm"
                         name="productname"
+                        id={item.id}
+                        onChange={(e) => handleChange(e)}
+                        value={item.productname}
                         data-test="product-form"
                         required
                       />
@@ -63,16 +98,20 @@ function ProductsForm() {
                   </td>
 
                   <td className="col-md-2">
-                    <div className="input-group input-group-sm mb-3">
-                      <span className="input-group-text" id="inputGroup-sizing-sm">
-                        Quantity
+                    <div class="input-group input-group-sm mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                        <label id="amount">Quantity</label>
                       </span>
                       <input
                         type="number"
-                        className="form-control"
+                        class="form-control"
                         aria-label="Sizing example input"
+                        aria-labelledby="amount"
                         aria-describedby="inputGroup-sizing-sm"
                         name="quantity"
+                        id={item.id}
+                        onChange={(e) => handleChange(e)}
+                        value={item.quantity}
                         data-test="product-form"
                         required
                       />
@@ -80,13 +119,15 @@ function ProductsForm() {
                   </td>
 
                   <td className="col-md-2">
-                    <div className="input-group input-group-sm mb-3">
-                      <span className="input-group-text" id="inputGroup-sizing-sm">
+                    <div class="input-group input-group-sm mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">
                         Type of Product
                       </span>
                       <select
                         className="form-control"
                         name="productType"
+                        id={item.id}
+                        onChange={(e) => handleChange(e)}
                         data-test="product-form"
                         required
                       >
@@ -101,18 +142,21 @@ function ProductsForm() {
                   </td>
 
                   <td className="col-md-2">
-                    <div className="input-group input-group-sm mb-3">
-                      <span className="input-group-text" id="inputGroup-sizing-sm">
+                    <div class="input-group input-group-sm mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">
                         Purchasing Type
                       </span>
                       <select
                         name="buyingType"
                         className="form-control"
+                        id={item.id}
+                        onChange={(e) => handleChange(e)}
                         data-test="product-form"
                         required
                       >
                         <option value="not Import" selected>
-                          not Import
+                          {" "}
+                          not Import{" "}
                         </option>
                         <option value="import"> Import </option>
                       </select>
@@ -120,24 +164,34 @@ function ProductsForm() {
                   </td>
 
                   <td className="col-md-2">
-                    <div className="input-group input-group-sm mb-3">
-                      <span className="input-group-text" id="inputGroup-sizing-sm">
-                        Price
+                    <div class="input-group input-group-sm mb-3">
+                      <span class="input-group-text" id="inputGroup-sizing-sm">
+                        <label id="prc">Price</label>
                       </span>
                       <input
                         type="number"
-                        className="form-control"
+                        class="form-control"
                         aria-label="Sizing example input"
+                        aria-labelledby="prc"
                         aria-describedby="inputGroup-sizing-sm"
                         name="productPrice"
+                        id={item.id}
+                        onChange={(e) => handleChange(e)}
+                        value={item.productPrice}
                         data-test="product-form"
                         required
                       />
                     </div>
                   </td>
-                  <td  >
-                    <button type="button" className="btn-close" aria-label="Close" id={item} 
-                      data-testid={`close-button-${item}`} onClick={(e) => deleteProduct(e)} ></button>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn-close"
+                      aria-label="Close"
+                      id={item.id}
+                      data-testid={`close-button-${item.id}`}
+                      onClick={(e) => deleteProduct(e)}
+                    ></button>
                   </td>
                 </tr>
               ))}
@@ -148,7 +202,9 @@ function ProductsForm() {
           Print Receipt
         </button>
       </form>
-      <button onClick={ (e) =>  addProduct(e)} data-testid="addProduct-button" >ADD Product</button>
+      <button onClick={() => addProduct()} data-testid="addProduct-button">
+        ADD Product
+      </button>
     </div>
   );
 }

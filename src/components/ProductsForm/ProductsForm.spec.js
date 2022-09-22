@@ -20,14 +20,5 @@ describe("Product Form Component Test", () => {
     expect(closeButton).toHaveLength(0);
   });
 
-  test("Click the printButton without filling out the form will result in an invalid form?", async () => {
-    await addProduct();
-    let printButton = screen.getByTestId("print-button");
-    let form = screen.getByTestId("form");
-
-    userEvent.click(printButton);
-
-    expect(form).not.toBeValid()
-  });
 
 });
