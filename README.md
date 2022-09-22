@@ -49,7 +49,7 @@
 To clone and run this application, you'll need [Git](https://git-scm.com) 
 ```bash
 # Clone this repository
-$ git clone https://github.com/BedirhanTalhaKuzucu/fireBaseBlog.git
+$ git clone https://github.com/BedirhanTalhaKuzucu/sales-taxes-project-with-tdd.git
 # Install dependencies
     -cd into the new folder and type
     $ npm install. 
