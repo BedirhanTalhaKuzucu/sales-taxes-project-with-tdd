@@ -113,16 +113,15 @@ function ReceiptDetails({ productList, listOpen }) {
                 </div>
                 <div class="col-xl-3">
                   <ul class="list-unstyled">
+                    <li class="text-muted ms-3" >
+                      <span class="text-black me-4"  >SubTotal</span> 
+                      $<span data-testid="totalPrice" >{totalPrice?.subTotal}  </span> 
+                    </li>
                     <li class="text-muted ms-3 mt-2" >
                       <span class="text-black me-4"  >Total Tax </span>
                       $<span data-testid="totalTax" >{totalPrice?.totalTax}</span> 
                     </li>
                   </ul>
-                  <p class="text-black float-start">
-                    <span class="text-black me-3"> Total Amount</span>
-                    $<span data-testid="totalPrice" style={{ "font-size": "25px" }} >{totalPrice?.subTotal}  </span> 
-
-                  </p>
                 </div>
               </div>
               <hr />

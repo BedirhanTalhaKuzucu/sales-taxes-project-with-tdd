@@ -69,13 +69,12 @@ function ProductsForm({setproductList, setlistOpen}) {
     setproductList(productDetails)
 
     setlistOpen(true)
-    setproductDetails(defaultDetails)
+    // setproductDetails(defaultDetails)
   }
 
 
   const handleChange = (e) => {
     let index =  productDetails.findIndex(item => item.id === Number(e.target.id))
-    console.log(index);
     let newArray = [...productDetails]
     newArray[index][`${e.target.name}`] = e.target.value
     setproductDetails( newArray )
