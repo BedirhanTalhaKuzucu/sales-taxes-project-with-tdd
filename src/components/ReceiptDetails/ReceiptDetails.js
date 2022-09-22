@@ -1,9 +1,25 @@
 import React , {useState, useEffect} from "react";
 
 function ReceiptDetails({ productList, listOpen }) {
-  const [totalPrice, setTotalPrice] = useState(12)
+  const [totalPrice, setTotalPrice] = useState()
+
 
   useEffect(() => {
+    if (productList) {
+      let totalTax = 0
+      let subTotal = 0
+      productList.map((item) => {
+      totalTax += item.totalTax
+      subTotal += Number(item.totalPrice)
+      })
+      totalTax = totalTax.toFixed(2)
+      subTotal = subTotal.toFixed(2)
+      setTotalPrice({totalTax, subTotal})
+      
+      console.log(totalTax, subTotal)
+      console.log(productList);
+
+    }
     
   }, [productList])
   
@@ -81,8 +97,8 @@ function ReceiptDetails({ productList, listOpen }) {
                           <th scope="row"> {key + 1} </th>
                           <td> {item.productname} </td>
                           <td> {item.quantity} </td>
-                          <td data-test="product-totalTax" > 0 </td>
-                          <td data-test="product-totalPrice" > 0 </td>
+                          <td data-test="product-totalTax" > {item.totalTax} </td>
+                          <td data-test="product-totalPrice" > {item.totalPrice} </td>
                         </tr>
                       );
                     })}
@@ -97,14 +113,18 @@ function ReceiptDetails({ productList, listOpen }) {
                 </div>
                 <div class="col-xl-3">
                   <ul class="list-unstyled">
+                    <li class="text-muted ms-3" >
+                      <span class="text-black me-4"  >SubTotal</span> 
+                      $<span data-testid="totalPrice" >{totalPrice?.subTotal}  </span> 
+                    </li>
                     <li class="text-muted ms-3 mt-2" >
                       <span class="text-black me-4"  >Total Tax </span>
-                      $<span data-testid="totalTax" >0</span> 
+                      $<span data-testid="totalTax" >{totalPrice?.totalTax}</span> 
                     </li>
                   </ul>
                   <p class="text-black float-start">
                     <span class="text-black me-3"> Total Amount</span>
-                    $<span data-testid="totalPrice" >0</span> 
+                    <span style={{ "font-size": "25px" }}>$1221</span>
                   </p>
                 </div>
               </div>
