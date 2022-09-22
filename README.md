@@ -57,17 +57,15 @@ $ git clone https://github.com/BedirhanTalhaKuzucu/sales-taxes-project-with-tdd.
  # to run the test codes
     - for react Testing Library
       $ npm test
+    - for Cypress Testing 
+      $ yarn cypress
 ```
 
 ## Acknowledgements
-- I built a blog site using React
-- I used  libraries for css (Mui)
-- I used fireblog as database
-- Users must register and login to the site to create a new blog.
-- Login user can create  blog;
-    +can comment on other users' blogs,
-    +can add favorites other users' blogs.
-- Only the creator of each block can update, delete that block.
+- I developed with an app react that calculates taxes
+- I used bootstrap as css package
+- Users should add as many inputs as they buy by clicking the add button and enter information about the product in these inputs.
+- A receipt is created when the print button is pressed. The receipt contains the individual tax prices of the products and the total tax price.
 
 ## Contact
 
