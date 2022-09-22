@@ -69,7 +69,7 @@ function ProductsForm({setproductList, setlistOpen}) {
     setproductList(productDetails)
 
     setlistOpen(true)
-    // setproductDetails(defaultDetails)
+    setproductDetails(defaultDetails)
   }
 
 
